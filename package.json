@@ -15,7 +15,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://serverless-notes-app-tutorial-01072019 --delete --profile personal",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E3QKW7ZGM5AAZW --paths '/*' --profile personal"
   },
   "eslintConfig": {
     "extends": "react-app"
